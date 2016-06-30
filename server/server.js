@@ -4,7 +4,12 @@ var io = require('socket.io')(http);
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var jwt = require('express-jwt');
-require('dotenv').config();
+
+console.log(process.env.NODE_ENV);
+var node_env = process.env.NODE_ENV;
+if(node_env !== 'production' || node_env !== 'staging') {
+  require('dotenv').config();
+}
 // var auth0 = require('./auth0.js')
 
 var yelpRouter = require('./routes/yelpRouter');

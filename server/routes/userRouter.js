@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var auth0 = require('../auth0.js');
+// var auth0 = require('../auth0.js');
 var request = require('request');
 var handlers = require('../util/handlers');
 
