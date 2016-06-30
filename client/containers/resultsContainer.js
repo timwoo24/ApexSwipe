@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import helpers from '../util/helpers';
-import SavedComponent from '../components/saved';
+import SavedComponent from '../components/results';
 import * as actions from '../actions/actions';
 
 const mapStateToProps = (state) => {

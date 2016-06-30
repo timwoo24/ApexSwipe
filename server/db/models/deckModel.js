@@ -3,14 +3,14 @@ var mongoose = require('mongoose');
 var deckSchema = mongoose.Schema({
 
   // id of user creating deck
-  userid: {
+  user_id: {
     type: String,
     required: true
   },
   
   // array containing user ids that user has chosen to share with
   shared: [{
-    userid: String,
+    user_id: String,
     swiped: Boolean
   }],
   

@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import { 
-  View, 
+import {
+  View,
   Text,
-  TouchableHighlight, 
-  StyleSheet 
+  TouchableHighlight,
+  StyleSheet
 } from 'react-native';
 
 export default class SplashComponent extends Component {
   constructor(props) {
     super(props);
   }
-  
+
   navigate(destination) {
     this.props.navigator.push({ name: destination });
   }
@@ -18,7 +18,6 @@ export default class SplashComponent extends Component {
   render() {
     return (
       <View style={styles.container}>
-      <Text style={styles.heading}>APEX SWIPE</Text>
         <View style={styles.container}>
           <TouchableHighlight
             style={styles.button}
@@ -26,7 +25,7 @@ export default class SplashComponent extends Component {
             onPress={() => {this.navigate('search')}}
            >
             <Text>Search</Text>
-          </TouchableHighlight>    
+          </TouchableHighlight>
           <TouchableHighlight
             style={styles.button}
             underlayColor={'lightblue'}
@@ -40,6 +39,27 @@ export default class SplashComponent extends Component {
             onPress={() => {this.navigate('results')}}
           >
             <Text>Results</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.button}
+            underlayColor={'lightblue'}
+            onPress={() => {this.navigate('camera')}}
+          >
+            <Text>Camera</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.friend}
+            underlayColor={'lightblue'}
+            onPress={() => {this.navigate('friends')}}
+          >
+            <Text>Friends List</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.saved}
+            underlayColor={'lightblue'}
+            onPress={() => {this.navigate('saved')}}
+          >
+            <Text>Saved Decks</Text>
           </TouchableHighlight>
         </View>
       </View>
@@ -65,9 +85,39 @@ const styles = StyleSheet.create({
     padding: 5,
     width: 300,
     height: 75,
-    borderColor: 'black', 
+    borderColor: 'black',
     borderWidth: 1,
     borderRadius: 5,
     marginTop: 10
+  },
+  friend: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 5,
+    width: 100,
+    height: 75,
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 5,
+    position: 'absolute',
+    bottom: 20,
+    padding: 20,
+    borderRadius: 5,
+    left: 20
+  },
+  saved: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 5,
+    width: 100,
+    height: 75,
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 5,
+    position: 'absolute',
+    bottom: 20,
+    padding: 20,
+    borderRadius: 5,
+    right: 20
   }
 })

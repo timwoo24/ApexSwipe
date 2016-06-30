@@ -1,11 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var controller = require('../db/controllers/deckController')
+var handlers = require('../util/handlers');
+// var controller = require('../db/controllers/deckController');
 
-router.get('/:userid', controller.getDecks);
-router.get('/shared/:userid', controller.getSharedDecks);
-router.post('/', controller.addDeck);
-router.put('/:id', controller.updateOneDeck);
-router.delete('/:id', controller.deleteOneDeck);
+router.get('/:user_id', handlers.getDecks);
+router.get('/shared/:user_id', handlers.getSharedDecks);
+router.post('/', handlers.addDeck);
+router.put('/:id', handlers.updateOneCard);
+router.delete('/:id', handlers.deleteOneDeck);
 
 module.exports = router;

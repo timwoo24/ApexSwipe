@@ -14,7 +14,7 @@ import ScrollCard from './scrollCard';
 import helpers from '../util/helpers';
 import * as actions from '../actions/actions';
 
-export default class SavedComponent extends Component {
+export default class ResultsComponent extends Component {
   constructor(props) {
     super(props);
   }
