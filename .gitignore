@@ -45,3 +45,4 @@ android/keystores/debug.keystore
 # API KEYS
 server/apiKeys.js
 server/auth0.js
+.env
