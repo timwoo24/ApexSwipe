@@ -23,7 +23,7 @@ var deckSchema = mongoose.Schema({
   // deck array containing objects(cards)
   deck: [{
     name: String, // or businessID?
-    imageUrl: String,
+    image_url: String,
     likes: Number,
   }],
 });

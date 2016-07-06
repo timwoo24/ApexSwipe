@@ -13,10 +13,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // toggleLikeClick: (id, liked) => { dispatch(action.toggleLike(id, liked)) },
     getUsers: (users) => { dispatch(action.getUsers(users)) },
     getFriends: (friends) => { dispatch(action.getFriends(friends)) },
-    addFriend: (users, id) => { dispatch(action.addFriend(users, id)) },
+    addFriend: (users) => { dispatch(action.addFriend(users)) },
+    removeFriend: (friend) => { dispatch(action.removeFriend(friend)) },
     addToShared: (user) => { dispatch(action.addToShared(user)) }
   }
 };

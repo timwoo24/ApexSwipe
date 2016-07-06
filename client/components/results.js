@@ -37,6 +37,7 @@ export default class ResultsComponent extends Component {
     const sorted = currentViewDeck.deck.sort( (a, b) => {
       return a.likes - b.likes;
     }).reverse();
+    console.log(sorted);
     
     return (  
       <View style={[styles.container, {marginTop: 60}]}>

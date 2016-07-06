@@ -80,8 +80,8 @@ var NavigationBarRouteMapper = {
             for (var i=0; i<4; i++) {
               navigator.pop();
             }
-          } else { 
-            navigator.pop(); 
+          } else {
+            navigator.pop();
           }  }}>
           <Text style={ styles.leftNavButtonText }>Back</Text>
         </TouchableHighlight>)

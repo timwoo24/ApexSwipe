@@ -1,3 +1,7 @@
+import _ from 'underscore';
+
+const baseUrl = 'http://localhost:3000';
+
 export default {
   
   searchYelp: (term, location, callback) => {
@@ -43,7 +47,6 @@ export default {
         const data = {
           id: business.id,
           name: business.name,
-          like: 0,
           image_url: business.image_url,
           url: business.url,
           review_count: business.review_count,
@@ -104,6 +107,31 @@ export default {
       })
       .then(function(user) {
         callback(user);
+      })
+      .catch(function(err) {
+        console.log(err);
+      })
+  },
+
+  removeFriend: (callback, userid, friend) => {
+    const url = `http://localhost:3000/users/friends/${userid}`;
+    console.log(userid);
+    console.log(friend);
+    fetch(url, {  
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        friend_id: friend._id
+      })
+    })
+      .then(function(response) {               
+        return response.json();
+      })
+      .then(function(friend) {
+        callback(friend);
       })
       .catch(function(err) {
         console.log(err);
@@ -172,6 +200,50 @@ export default {
         userId: userId
       })
     })
+    fetch(request)
+      .then(function(response) {
+        return response.json() 
+      })
+      .then(function(response) {
+        callback(response);
+      })
+      .catch(function(err) {
+        console.log(err);
+      })
+  },
+  
+  postYelpDeck: (user_id, name, deck, shared, callback) => {
+    // user_id: get from profile state
+    // name: get from some user text input
+    // deck: get from currentDeck state
+    // shared: get from users or friends state
+    const builtDeck = deck.filter( card => card.like );
+    const url = `http://localhost:3000/decks`;
+    const body = {
+      user_id,
+      type: 'yelp',
+      name,
+      deck: builtDeck.map(card => {
+        return {
+          name: card.id,
+          image_url: null,
+          likes: 0
+        }
+      }),
+      shared: shared.map(user => {
+        return {
+          user_id: user.user_id,
+          swiped: false
+        }
+      }) 
+    };
+    const request = new Request(url, {
+      method: 'POST',
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      body: JSON.stringify(body)
+    });
     fetch(request)
       .then(function(response) {
         return response.json() 

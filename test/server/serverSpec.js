@@ -113,7 +113,6 @@ describe('API', function() {
         })
         .expect(200)
         .expect(function(res) {
-          console.log(res.body);
           expect(res.body.shared[0].swiped).to.equal(true);
         })
         .end(done);

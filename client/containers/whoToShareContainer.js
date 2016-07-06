@@ -5,15 +5,16 @@ import * as action from '../actions/actions';
 
 const mapStateToProps = (state) => {
   return {
+    user_id: state.welcome.profile.userId,
+    currentDeck: state.currentDeck,
     shared: state.shared,
-    friends: state.friends
+    friends: state.friends,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addToShared: (user) => { dispatch(action.addToShared(user)) },
-    removeFromShared: (user) => { dispatch(action.removeFromShared(user)) }
+    addToShared: (shareList) => { dispatch(action.addToShared(shareList)) },
   }
 };
 

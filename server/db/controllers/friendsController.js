@@ -67,19 +67,20 @@ module.exports = {
   removeFriend: function(user_id, friendId, callback) {
     
     Friends.findOne({user_id: user_id}, function(err, user) {
+      console.log(user);
       if(err) {
         callback(err);
         return;
       }
-      
       user.list.id(friendId).remove();
       user.save(function(err) {
         if(err) {
-          callback(err)
+          callback(err);
         } else {
           callback(null, user.list);
         }
       });
     })
+
   }
 }

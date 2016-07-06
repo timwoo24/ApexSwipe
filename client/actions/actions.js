@@ -1,5 +1,12 @@
 import helpers from '../util/helpers';
 
+//================================================
+
+//Yelp Actions
+
+//================================================
+
+//action to send the search term to yelp api query
 export const searchTerm = (term) => {
   return {
     type: 'SEARCH_TERM',
@@ -7,6 +14,7 @@ export const searchTerm = (term) => {
   };
 };
 
+//action to send the search location to yelp api query
 export const searchLocation = (location) => {
   return {
     type: 'SEARCH_LOCATION',
@@ -14,12 +22,14 @@ export const searchLocation = (location) => {
   };
 };
 
+//action to reset the search parameters to empty strings
 export const resetSearch = () => {
   return {
     type: 'RESET_SEARCH',
   };
 };
 
+//action to build a deck of yelp data
 export const buildDeckYelp = (yelpData) => {
   return {
     type: 'BUILD_DECK_YELP',
@@ -27,23 +37,27 @@ export const buildDeckYelp = (yelpData) => {
   };
 };
 
-// this action will increment currentCard by 1
+//================================================
 
+//Deck Actions
+
+//================================================
+
+//action will increment currentCard by 1
 export const nextCard = () => {
   return {
     type: 'NEXT_CARD'
   }
 }
-
+//action will decrement currentCard by 1
 export const prevCard = () => {
   return {
     type: 'PREV_CARD'
   }
 }
 
-// toggleLike will search currentDeck, find matching id and will toggle like
+//action will toggle like property of index of currentDeck to true
 // and it will also toggle votedOn to true
-
 export const toggleLikeTrue = (index) => {
   return {
     type: 'TOGGLE_LIKE_TRUE',
@@ -51,6 +65,7 @@ export const toggleLikeTrue = (index) => {
   }
 }
 
+//action will toggle like property of index of currentDeck to false
 export const toggleLikeFalse = (index) => {
   return {
     type: 'TOGGLE_LIKE_FALSE',
@@ -58,17 +73,9 @@ export const toggleLikeFalse = (index) => {
   }
 }
 
-export const getUsers = (users) => {
-  return {
-    type: 'GET_USERS',
-    users
-  }
-}
-
 //================================================
 
 //Camera Actions
-
 
 //================================================
 
@@ -79,13 +86,15 @@ export const takePictureSuccess = () => {
     type: 'TAKE_PICTURE_SUCCESS'
   }
 }
+
 //cameraModeOn will set a state boolean so that the deckview will render
-//images instead of yelp cards
+//images instead of yelp cards- default is true
 export const cameraModeOn = () => {
   return {
     type: 'CAMERA_MODE_ON'
   }
 }
+
 //changeToCameraMode will set a state boolean so that the deckview will render
 //yelpCards instead of images
 export const cameraModeOff = () => {
@@ -93,6 +102,7 @@ export const cameraModeOff = () => {
     type: 'CAMERA_MODE_OFF'
   }
 }
+
 //will create deck out of images from cameraRoll
 export const buildImageDeck = (images) => {
   return {
@@ -100,25 +110,33 @@ export const buildImageDeck = (images) => {
     images
   };
 }
+
 //will toggle status of loading images in deckview
 export const doneLoading = () => {
   return {
     type: 'DONE_LOADING'
   }
 }
-//will toggle whether or not user would like to add picture to deck
+
+//will toggle whether or not user would like to add picture to deck to
+//send to friends
 export const togglePickTrue = (index) => {
   return {
     type: 'TOGGLE_PICK_TRUE',
     index
   }
 }
+
+//will toggle whether or not user would like to add picture to deck to
+//send to friends
 export const togglePickFalse = (index) => {
   return {
     type: 'TOGGLE_PICK_FALSE',
     index
   }
 }
+
+//will build a new deck from picked pictures- not currently implemented
 export const pickImageDeck = (deck) => {
   return {
     type: 'PICK_IMAGE_DECK',
@@ -126,6 +144,21 @@ export const pickImageDeck = (deck) => {
   }
 }
 
+//================================================
+
+//User Actions
+
+//================================================
+
+//will get users to for users view
+export const getUsers = (users) => {
+  return {
+    type: 'GET_USERS',
+    users
+  }
+}
+
+//will get current user's friends for user's view
 export const getFriends = (friends) => {
   return {
     type: 'GET_FRIENDS',
@@ -133,6 +166,7 @@ export const getFriends = (friends) => {
   }
 }
 
+//will add friend to current user's list of friends
 export const addFriend = (friendsList) => {
   return {
     type: 'ADD_FRIEND',
@@ -140,6 +174,7 @@ export const addFriend = (friendsList) => {
   }
 }
 
+//
 export const setProfile = (profile) => {
   return {
     type: 'SET_PROFILE',
@@ -147,6 +182,7 @@ export const setProfile = (profile) => {
   }
 }
 
+//
 export const setToken = (token) => {
   return {
     type: 'SET_TOKEN',
@@ -154,6 +190,7 @@ export const setToken = (token) => {
   }
 }
 
+//
 export const setUserDecks = (userDecks) => {
   return {
     type: 'SET_USER_DECKS',
@@ -168,6 +205,7 @@ export const setSharedDecks = (sharedDecks) => {
   }
 }
 
+//
 export const setCurrentViewDeck = (currentViewDeck) => {
   return {
     type: 'SET_CURRENT_VIEW_DECK',
@@ -175,24 +213,34 @@ export const setCurrentViewDeck = (currentViewDeck) => {
   }
 }
 
+//
 export const changeCurrentViewCard = () => {
   return {
     type: 'CHANGE_CURRENT_VIEW_CARD'
   }
 }
 
+//
 export const resetCurrentViewCard = () => {
   return {
     type: 'RESET_CURRENT_VIEW_CARD'
   }
 }
 
+//
 export const showYelp = () => {
   return {
     type: 'SHOW_YELP'
   }
 }
 
+export const resetCurrentDeck = () => {
+  return {
+    type: 'RESET_CURRENT_DECK'
+  }
+}
+
+//will get the current user's saved decks
 export const fetchUserDecks = (userid) => {
   return (dispatch, getState) => {
     helpers.getUserCreatedDecks(userid, (userDecks) => {
@@ -238,6 +286,7 @@ export const fetchUserDecks = (userid) => {
   }
 }
 
+//will fetch the current user's shared decks
 export const fetchSharedDecks = (userid, callback) => {
   return (dispatch, getState) => {
     helpers.getUserSharedDecks(userid, (sharedDecks) => {
@@ -262,7 +311,8 @@ export const fetchSharedDecks = (userid, callback) => {
             helpers.getYelpBusiness(card.name, (business) => {
               deck.deck[j] = {
                 ...business,
-                _id: card._id
+                _id: card._id,
+                likes: card.likes
               };
               done++;
               if(done === length) {
@@ -286,16 +336,9 @@ export const fetchSharedDecks = (userid, callback) => {
   }
 }
 
-export const addToShared = (user) => {
+export const addToShared = (shareList) => {
   return {
     type: 'ADD_TO_SHARED',
-    user
-  }
-}
-
-export const removeFromShared = (user) => {
-  return {
-    type: 'REMOVE_FROM_SHARED',
-    user
+    shareList
   }
 }

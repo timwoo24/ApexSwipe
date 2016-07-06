@@ -7,20 +7,19 @@ import {
   StyleSheet 
 } from 'react-native';
 import * as action from '../actions/actions';
+import helpers from '../util/helpers';
 
 export default class Friend extends Component {
-  sendDeck() { 
-    const { addToShared, friend } = this.props;
-    addToShared(friend);
-  }
 
   render() {
-    const { id, friend } = this.props;
+    const { id, friends, friend, profile, removeFriend, addFriend } = this.props;
     return (
       <TouchableHighlight
         style={styles.user}
         underlayColor={'lightgreen'}
-        onPress={() => {this.sendDeck()}}
+        onPress={() => {
+          helpers.removeFriend((friends) => {addFriend(friends)}, profile.userId, friend);
+        }}
       >
         <Text>{ friend.email }</Text>
       </TouchableHighlight>

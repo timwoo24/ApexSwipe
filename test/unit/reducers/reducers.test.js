@@ -172,6 +172,17 @@ describe('Reducers', () => {
       expect(state[0].name).toEqual(action.yelpData[0].name);
       expect(state[0].review_count).toEqual(action.yelpData[0].review_count);
     });
+
+    it('should reset the currentDeck to an empty array', () => {
+      const stateBefore = [{},{},{}];
+      const action = {
+        type: 'RESET_CURRENT_DECK',
+      };
+
+      const stateAfter = [];
+      df(stateBefore);
+      expect(deckReducer(stateBefore, action)).toEqual(stateAfter);
+    });
   });
 
   describe('currentCardReducer', () => {
@@ -221,7 +232,7 @@ describe('Reducers', () => {
       expect(friendsReducer(beforeState, action)).toEqual(afterState);
     });
   });
-  
+
   describe('cameraReducer', () => {
     it('should increment the number of pics taken', () => {
       const stateBefore = { picsTaken: 0 };
@@ -265,13 +276,13 @@ describe('Reducers', () => {
   });
 
   describe('shareReducer', () => {
-    it('should add a friend to the shared list', () => {
+    it('should add a list to the shared list', () => {
       const stateBefore = [];
       const action = {
         type: 'ADD_TO_SHARED',
-        user: {}
+        shareList: [{}, {}]
       }
-      const stateAfter = [{}];
+      const stateAfter = [{}, {}];
       df(stateBefore);
       expect(shareReducer(stateBefore, action)).toEqual(stateAfter);
     });

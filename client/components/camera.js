@@ -28,12 +28,13 @@ export default class CameraComponent extends Component {
         flashMode: Camera.constants.FlashMode.auto,
       },
     };
-
+    //binding functions used by camera
     this.takePicture = this.takePicture.bind(this);
     this.switchType = this.switchType.bind(this);
     this.switchFlash = this.switchFlash.bind(this);
   }
-
+  //actual take picture function, promise will either increment counter or
+  //log an error
   takePicture() {
     if (this.camera) {
       this.camera.capture()
@@ -41,7 +42,8 @@ export default class CameraComponent extends Component {
         .catch((err) => console.log(err));
     }
   }
-
+  //switch between front and rear camera. relatively untested due to not developing on device,
+  //but functionality appears to work in app in emulator
   switchType() {
     let newType;
     const { back, front } = Camera.constants.Type;
@@ -59,7 +61,7 @@ export default class CameraComponent extends Component {
       },
     });
   }
-
+  //will retrieve proper icon depending on state of camera
   get typeIcon() {
     let icon;
     const { back, front } = Camera.constants.Type;
@@ -72,7 +74,7 @@ export default class CameraComponent extends Component {
 
     return icon;
   }
-
+  //will switch between different flash modes
   switchFlash() {
     let newFlashMode;
     const { auto, on, off } = Camera.constants.FlashMode;
@@ -92,7 +94,7 @@ export default class CameraComponent extends Component {
       },
     });
   }
-
+  //will return proper icon depending on state of flash mode
   get flashIcon() {
     let icon;
     const { auto, on, off } = Camera.constants.FlashMode;
@@ -107,7 +109,7 @@ export default class CameraComponent extends Component {
 
     return icon;
   }
-
+  //will render camera, with capture, mode, and flash buttons
   render() {
     return (
       <View style={styles.container}>

@@ -37,6 +37,8 @@ export default (state = [], action) => {
       return [
         ...action.images
       ]
+    case 'RESET_CURRENT_DECK':
+      return []
     case 'TOGGLE_LIKE_TRUE':
       return state
         .slice(0,action.index)
