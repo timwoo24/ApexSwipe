@@ -40,14 +40,7 @@ export default class SplashComponent extends Component {
           <TouchableHighlight
             style={styles.button}
             underlayColor={'lightblue'}
-            onPress={() => {{this.props.resetCurrentDeck()}{this.props.resetCardCount()}{this.navigate('camera')}}}
-          >
-            <Text style={styles.text}>Camera</Text>
-          </TouchableHighlight>
-          <TouchableHighlight
-            style={styles.button}
-            underlayColor={'lightblue'}
-            onPress={() => {{this.props.cameraModeOn()}{this.navigate('deckView')}}}
+            onPress={() => {{this.props.cameraModeOn()}{this.props.resetCurrentDeck()}{this.props.resetCardCount()}{this.navigate('camera')}}}
           >
             <Text style={styles.text}>Build Picture Deck</Text>
           </TouchableHighlight>
@@ -89,9 +82,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 5,
     width: 300,
-    height: 75,
-    borderColor: 'black',
-    borderRadius: 5,
+    height: 150,
+    borderColor: 'white',
+    borderWidth: 0.5,
+    borderRadius: 25,
     marginTop: 10,
     backgroundColor: '#80b3ff'
   },
@@ -101,9 +95,12 @@ const styles = StyleSheet.create({
     padding: 5,
     width: 110,
     height: 75,
-    borderColor: 'black',
-    borderWidth: 1,
-    borderRadius: 5,
+    borderColor: 'blue',
+    borderWidth: 0.5,
+    borderBottomLeftRadius: 60,
+    borderBottomRightRadius: 10,
+    borderTopLeftRadius: 60,
+    borderTopRightRadius: 10,
     position: 'absolute',
     bottom: 20,
     padding: 20,
@@ -117,9 +114,12 @@ const styles = StyleSheet.create({
     padding: 5,
     width: 110,
     height: 75,
-    borderColor: 'black',
-    borderWidth: 1,
-    borderRadius: 5,
+    borderColor: 'blue',
+    borderWidth: 0.5,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 60,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 60,
     position: 'absolute',
     bottom: 20,
     padding: 20,
@@ -139,3 +139,10 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   }
 })
+// <TouchableHighlight
+//   style={styles.button}
+//   underlayColor={'lightblue'}
+//   onPress={() => {{this.props.cameraModeOn()}{this.navigate('deckView')}}}
+// >
+//   <Text>Build Picture Deck</Text>
+// </TouchableHighlight>
