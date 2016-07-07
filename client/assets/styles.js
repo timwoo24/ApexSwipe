@@ -103,10 +103,10 @@ const styles = StyleSheet.create({
     width: 300
   },
   yelp: {
-    width: 100,                                                                                                                                                                                                   
-    height: 50,                                                                                                                                                                                                  
-    left: 10,                                                                                                                                                                                                    
-    top: 10, 
+    width: 100,
+    height: 50,
+    left: 10,
+    top: 10,
   },
 
 //used in search
@@ -167,9 +167,54 @@ const styles = StyleSheet.create({
   nav: {
     height: 60,
     backgroundColor: '#efefef'
+  },
+//used in camera
+  cameraContainer: {
+    flex: 1,
+  },
+  preview: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  overlay: {
+    position: 'absolute',
+    padding: 70,
+    right: 0,
+    left: 0,
+    alignItems: 'center',
+  },
+  topOverlay: {
+    top: 0,
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  bottomOverlay: {
+    bottom: 0,
+    backgroundColor: 'rgba(0,0,0,0.4)',
+  },
+  captureButton: {
+    flex: 1,
+    padding: 15,
+    backgroundColor: 'white',
+    borderRadius: 40,
+  },
+  typeButton: {
+    padding: 5,
+  },
+  flashButton: {
+    padding: 5,
+  },
+  buildCameraDeck: {
+    bottom: 10,
+    backgroundColor: 'white',
+    alignSelf: 'center',
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 20,
+
   }
-
-
-
 });
 export default styles

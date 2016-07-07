@@ -4,12 +4,13 @@ import {
   Image,
   Dimensions,
   StatusBar,
-  StyleSheet,
   TouchableOpacity,
   View,
+  Text,
 } from 'react-native';
 import Camera from 'react-native-camera';
 import * as action from '../actions/actions';
+import styles from '../assets/styles';
 
 //camera component provides camera functionality, and saves pictures to cameraRoll on capture
 export default class CameraComponent extends Component {
@@ -41,6 +42,9 @@ export default class CameraComponent extends Component {
         .then(() => this.props.takePictureSuccess())
         .catch((err) => console.log(err));
     }
+  }
+  navigate(destination) {
+    this.props.navigator.push({ name: destination });
   }
   //switch between front and rear camera. relatively untested due to not developing on device,
   //but functionality appears to work in app in emulator
@@ -112,7 +116,7 @@ export default class CameraComponent extends Component {
   //will render camera, with capture, mode, and flash buttons
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.cameraContainer}>
         <StatusBar
           animated
           hidden
@@ -138,6 +142,11 @@ export default class CameraComponent extends Component {
             />
           </TouchableOpacity>
           <TouchableOpacity
+            style={styles.buildCameraDeck}
+            onPress={() => {{this.props.cameraModeOn()}{this.navigate('deckView')}}}>
+            <Text style={styles.swipeBtnText}>BUILD DECK!</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
             style={styles.flashButton}
             onPress={this.switchFlash}
           >
@@ -160,43 +169,3 @@ export default class CameraComponent extends Component {
     );
   }
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  preview: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-  overlay: {
-    position: 'absolute',
-    padding: 70,
-    right: 0,
-    left: 0,
-    alignItems: 'center',
-  },
-  topOverlay: {
-    top: 0,
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  bottomOverlay: {
-    bottom: 0,
-    backgroundColor: 'rgba(0,0,0,0.4)',
-  },
-  captureButton: {
-    flex: 1,
-    padding: 15,
-    backgroundColor: 'white',
-    borderRadius: 40,
-  },
-  typeButton: {
-    padding: 5,
-  },
-  flashButton: {
-    padding: 5,
-  },
-});
