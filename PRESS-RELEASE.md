@@ -27,7 +27,7 @@ Once the project moves into development, the press release can be used as a touc
   > Apex Swiper gives you the opportunity to create collections of all the important decisions you make in life.  Create, swipe, and share with your friends. Decision making is hard.  Choices are plentify.  Let's simplify that process.
   
 ## Problem ##
-  > Decision making is hard.  Choices are plentiful.  Let's simplify that process by introducing an easy to use system that allows  you to swipe to choose from the possible options.
+  > Decision making is hard.  Choices are plentiful.  Let's simplify that process by introducing an easy to use system that allows you to swipe to choose from the possible options.
 
 ## Solution ##
   > Swipe and polling made easy.

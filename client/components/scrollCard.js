@@ -45,7 +45,7 @@ export default class ScrollCard extends Component {
           <Image style={styles.rating} source={{uri:card.rating_img_url}} />
           <Text>{ card.review_count } Reviews</Text>
           <Text style={styles.likeText}> This choice received: </Text>
-          <Text style={styles.likeCount}>{ card.like} likes </Text>
+          <Text style={styles.likeCount}>{ card.likes} likes </Text>
         </View>
       </View>
     );
