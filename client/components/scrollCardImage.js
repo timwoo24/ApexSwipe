@@ -8,28 +8,10 @@ import {
   Image
 } from 'react-native';
 
-export default class ScrollCard extends Component {
+export default class ScrollCardImage extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     return false;
   }
-  
-  renderYelpDesc() {
-    const { card } = this.props;
-    if(card.review_count) {
-      return (
-        <View>
-          <Text>{ card.review_count } Reviews</Text>
-          <TouchableOpacity
-            style={{height: 40}}
-            onPress={() => { Linking.openURL(card.url).catch(err => console.error('An error occurred', err)) }}
-           >
-            <Text>Check Reviews</Text>
-          </TouchableOpacity>
-        </View>
-      )
-    }
-  }
-
   
   render() {
     const { card, position } = this.props;
@@ -43,9 +25,10 @@ export default class ScrollCard extends Component {
         <View style={styles.description}>
           <Text style={styles.name} >{ card.name }</Text>
           <Image style={styles.rating} source={{uri:card.rating_img_url}} />
-          <Text>{ card.review_count } Reviews</Text>
+
           <Text style={styles.likeText}> This choice received: </Text>
-          <Text style={styles.likeCount}>{ card.like} likes </Text>
+          <Text style={styles.likeCount}>{ card.likes} likes </Text>
+
         </View>
       </View>
     );
@@ -55,7 +38,7 @@ export default class ScrollCard extends Component {
 const styles = StyleSheet.create({
   card:  {
     flexDirection: 'row', 
-    height: 200,
+    height: 190,
     margin: 7,
     padding: 5,
     backgroundColor: '#ffffff',
@@ -76,10 +59,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexWrap: 'wrap',
     marginLeft: 10
-  },
-  name: {
-    fontWeight: 'bold',
-    fontFamily: "Trebuchet MS"
   },
   rating: {
     width: 84, 

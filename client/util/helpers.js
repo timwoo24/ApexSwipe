@@ -49,7 +49,8 @@ export default {
           review_count: business.review_count,
           rating_img_url: business.rating_img_url,
           rating_img_url_large: business.rating_img_url_large,
-          rating_img_url_small: business.rating_img_url_small
+          rating_img_url_small: business.rating_img_url_small,
+          location: business.location
         }
         // console.log(data);
         callback(data);

@@ -9,6 +9,8 @@ import {
   Image
 } from 'react-native';
 import ScrollCard from './scrollCard';
+import ScrollCardContent from './scrollCardContent';
+import ScrollCardImage from './scrollCardImage';
 import helpers from '../util/helpers';
 import * as actions from '../actions/actions';
 import Accordion from 'react-native-collapsible/Accordion';
@@ -23,10 +25,10 @@ export default class ResultsComponent extends Component {
     sortCurrentViewDeck();
   }
 
-  _renderHeader(section){
+  _renderYelpHeader(section){
     return (
       <ScrollView
-       style={styles.scrollView}
+       style={styles.scrollViewHeader}
        automaticallyAdjustContentInsets={false}    
        scrollEventThrottle={200}
      >
@@ -35,9 +37,34 @@ export default class ResultsComponent extends Component {
     )
   }
 
-  _renderContent(section){
+  _renderImageHeader(section){
     return (
-      <Text> {section.like} </Text>
+      <ScrollView
+       style={styles.scrollViewHeader}
+       automaticallyAdjustContentInsets={false}    
+       scrollEventThrottle={200}
+     >
+       <ScrollCardImage key={section._id} card={section} />
+     </ScrollView>
+    )
+  }
+
+  _renderYelpContent(section){
+    return (
+    <ScrollView
+       style={styles.scrollViewContent}
+       automaticallyAdjustContentInsets={false}    
+       scrollEventThrottle={200}
+     >
+       <ScrollCardContent key={section._id} card={section} />
+     </ScrollView>
+    )
+  }
+
+  _renderImageContent(section){
+    return (
+      <ScrollView>
+      </ScrollView>
     )
   }
 
@@ -73,8 +100,8 @@ export default class ResultsComponent extends Component {
           >
             <Accordion 
               sections = { sortedDeck }
-              renderHeader={this._renderHeader}
-              renderContent={this._renderContent}
+              renderHeader={ currentViewDeck.type === "yelp" ? this._renderYelpHeader : this._renderImageHeader }
+              renderContent={ currentViewDeck.type === "yelp" ? this._renderYelpContent : this._renderImageContent}
             />
           </ScrollView>
         </View>
